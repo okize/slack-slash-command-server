@@ -1,0 +1,27 @@
+{
+  "name": "slack-slash-server",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Server for responding to custom Slack slash commands",
+  "engines": {
+    "node": ">= 0.12"
+  },
+  "scripts": {
+    "start": "node app.js"
+  },
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/okize/slack-slash-server"
+  },
+  "author": "Morgan Wigmanich <okize123@gmail.com> (https://github.com/okize)",
+  "homepage": "https://github.com/okize/slack-slash-server",
+  "bugs": "https://github.com/okize/slack-slash-server/issues",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.13.2",
+    "express": "^4.13.1",
+    "flip": "^0.1.1",
+    "request": "^2.58.0"
+  }
+}
