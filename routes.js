@@ -2,13 +2,12 @@ var express = require('express');
 var router = express.Router();
 var flip = require('flip');
 var request = require('request');
-var util = require('./util');
-var tokens = process.env.SLACK_TOKENS;
+var tokens = process.env.SLACK_TOKENS.split(',');
 var webhook = process.env.SLACK_WEBHOOK_URL;
 
 // authenticate requests
 router.use(function (req, res, next) {
-  if (req.body.token !== tokens) {
+  if (tokens.indexOf(req.body.token) == -1) {
     return res.status(401).send({ success: false, error: 'Invalid token.' });
   }
   next();
