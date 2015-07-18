@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
+var morgan = require('morgan');
 var fs = require('fs');
 var routes = './routes/';
 var port = process.env.PORT || 9000;
@@ -9,8 +10,8 @@ var tokens = process.env.SLACK_TOKENS.split(',');
 // config
 app.set('webhook', process.env.SLACK_WEBHOOK_URL);
 
-// route to test app is running
-app.get('/ping', function (req, res) {res.json({response: 'PONG'})});
+// apache-style logging
+app.use(morgan('dev'));
 
 // body parsing middleware
 app.use(bodyParser.urlencoded({ extended: false }));
