@@ -24,7 +24,7 @@ module.exports = function (app) {
       if (err) {
         return res.status(500).send({success: false, error: err.message});
       }
-      return res.status(200).send({success: true, response: body});
+      return res.status(200).send();
     });
 
   });
