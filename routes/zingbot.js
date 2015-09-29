@@ -11,7 +11,7 @@ module.exports = function (app) {
     payload = {
       channel: req.channel,
       text: imageUrl,
-      icon_emoji: ':frowning:'
+      icon_emoji: ':zap:'
     };
 
     requestOpts = {
