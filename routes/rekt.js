@@ -6,7 +6,7 @@ module.exports = function (app) {
 
     var text, payload, requestOpts;
 
-    text = '\n:white_medium_square: Not rekt  \s\s :ballot_box_with_check: Rekt';
+    text = '\n:white_medium_square: Not rekt   :ballot_box_with_check: Rekt';
 
     payload = {
       channel: req.channel,
