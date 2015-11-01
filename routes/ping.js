@@ -11,7 +11,7 @@ module.exports = function (app) {
     payload = {
       channel: req.channel,
       text: text,
-      icon_emoji: ':grimacing:'
+      icon_emoji: ':signal_strength:'
     };
 
     requestOpts = {
