@@ -4,6 +4,7 @@ var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var fs = require('fs');
 var routes = './routes/';
+var appName = 'Slack Slash Server';
 var port = process.env.PORT || 9000;
 var tokens = process.env.SLACK_TOKENS.split(',');
 
@@ -35,13 +36,13 @@ app.use(function (req, res, next) {
 });
 
 // require route files
-fs.readdirSync(routes).forEach(function(file) {
+fs.readdirSync(routes).forEach(function (file) {
   require(routes + file)(app);
 });
 
 // start app
 app.listen(port, function () {
-  console.log('\nApp listening on port %s\n', port);
+  console.log('\n%s listening on port %s\n', appName, port);
 });
 
 module.exports = app;
