@@ -1,0 +1,7 @@
+// add rule overrides as needed
+{
+  'extends': 'airbnb',
+  'rules': {
+    'no-console': 0,
+  }
+}
