@@ -1,12 +1,12 @@
-var express = require('express');
-var app = express();
-var bodyParser = require('body-parser');
-var morgan = require('morgan');
-var fs = require('fs');
-var routes = './routes/';
-var appName = 'Slack Slash Server';
-var port = process.env.PORT || 9000;
-var tokens = process.env.SLACK_TOKENS.split(',');
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
+const morgan = require('morgan');
+const fs = require('fs');
+const tokens = process.env.SLACK_TOKENS.split(',');
+const routes = './routes/';
+const appName = 'Slack Slash Server';
+const port = process.env.PORT || 9000;
 
 // config
 app.set('webhook', process.env.SLACK_WEBHOOK_URL);
@@ -18,15 +18,15 @@ app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // authenticate requests
-app.use(function (req, res, next) {
-  if (tokens.indexOf(req.body.token) == -1) {
-    return res.status(401).send({ success: false, error: 'Invalid token.'});
+app.use((req, res, next) => {
+  if (tokens.indexOf(req.body.token) === -1) {
+    return res.status(401).json({ success: false, error: 'Invalid token.'});
   }
   next();
 });
 
 // set channel override
-app.use(function (req, res, next) {
+app.use((req, res, next) => {
   if (req.body.channel_name === 'directmessage' || req.body.channel_name === 'privategroup') {
     req.channel = req.body.channel_id;
   } else {
@@ -36,12 +36,16 @@ app.use(function (req, res, next) {
 });
 
 // require route files
-fs.readdirSync(routes).forEach(function (file) {
+fs.readdirSync(routes).forEach((file) => {
   require(routes + file)(app);
 });
 
+app.get('/', (req, res) => {
+  res.status(500).send(appName);
+});
+
 // start app
-app.listen(port, function () {
+app.listen(port, () => {
   console.log('\n%s listening on port %s\n', appName, port);
 });
 
