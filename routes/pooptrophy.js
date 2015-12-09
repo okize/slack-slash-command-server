@@ -1,30 +1,24 @@
-var request = require('request');
+const request = require('request');
 
-module.exports = function (app) {
+module.exports = (app) => {
+  app.post('/pooptrophy', (req, res) => {
+    const text = '\n\u200C\n:poop:\n:trophy:';
 
-  app.post('/pooptrophy', function (req, res) {
-
-    var text, payload, requestOpts;
-
-    text = '\n\u200C\n:poop:\n:trophy:';
-
-    payload = {
+    const payload = {
       channel: req.channel,
-      text: text
+      text: text,
     };
 
-    requestOpts = {
+    const requestOpts = {
       url: app.get('webhook'),
-      form: {payload: JSON.stringify(payload)}
+      form: {payload: JSON.stringify(payload)},
     };
 
-    request.post(requestOpts, function (err, resp, body) {
+    request.post(requestOpts, (err) => {
       if (err) {
         return res.status(500).send({success: false, error: err.message});
       }
       return res.status(200).send();
     });
-
   });
-
 };
