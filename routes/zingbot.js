@@ -1,31 +1,25 @@
-var request = require('request');
+const request = require('request');
 
-module.exports = function (app) {
+module.exports = (app) => {
+  app.post('/zingbot', (req, res) => {
+    const imageUrl = 'https://pbs.twimg.com/media/CKE98yIUMAA4Y0o.jpg';
 
-  app.post('/zingbot', function (req, res) {
-
-    var imageUrl, payload, requestOpts;
-
-    imageUrl = 'https://pbs.twimg.com/media/CKE98yIUMAA4Y0o.jpg';
-
-    payload = {
+    const payload = {
       channel: req.channel,
       text: imageUrl,
-      icon_emoji: ':zap:'
+      icon_emoji: ':zap:',
     };
 
-    requestOpts = {
+    const requestOpts = {
       url: app.get('webhook'),
-      form: {payload: JSON.stringify(payload)}
+      form: {payload: JSON.stringify(payload)},
     };
 
-    request.post(requestOpts, function (err, resp, body) {
+    request.post(requestOpts, (err) => {
       if (err) {
         return res.status(500).send({success: false, error: err.message});
       }
       return res.status(200).send();
     });
-
   });
-
 };
