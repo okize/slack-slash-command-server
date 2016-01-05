@@ -1,4 +1,4 @@
-const request = require('request');
+const response = require('../lib/responseHelper');
 
 module.exports = (app) => {
   app.post('/pooptrophy', (req, res) => {
@@ -9,16 +9,6 @@ module.exports = (app) => {
       text: text,
     };
 
-    const requestOpts = {
-      url: app.get('webhook'),
-      form: {payload: JSON.stringify(payload)},
-    };
-
-    request.post(requestOpts, (err) => {
-      if (err) {
-        return res.status(500).send({success: false, error: err.message});
-      }
-      return res.status(200).send();
-    });
+    response(payload, app, res);
   });
 };
