@@ -1,7 +1,10 @@
 // add rule overrides as needed
 {
-  'extends': 'airbnb',
-  'rules': {
-    'no-console': 0,
+  "extends": "airbnb",
+  "rules": {
+    "no-console": 0,
+    "object-curly-spacing": 0,
+    "object-shorthand": 0,
+    "prefer-template": 0
   }
 }
