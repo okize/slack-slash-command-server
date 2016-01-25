@@ -8,8 +8,8 @@ module.exports = (app) => {
       if (!error && resp.statusCode === 200) {
         const payload = {
           channel: req.channel,
-          text: body,
           icon_emoji: ':thumbsup:',
+          text: body,
         };
 
         response(payload, app, res);

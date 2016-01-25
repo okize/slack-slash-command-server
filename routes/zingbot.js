@@ -6,8 +6,8 @@ module.exports = (app) => {
 
     const payload = {
       channel: req.channel,
-      text: imageUrl,
       icon_emoji: ':zap:',
+      text: imageUrl,
     };
 
     response(payload, app, res);

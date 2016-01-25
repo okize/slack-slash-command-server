@@ -6,8 +6,8 @@ module.exports = (app) => {
 
     const payload = {
       channel: req.channel,
-      text: text,
       icon_emoji: ':signal_strength:',
+      text: text,
     };
 
     response(payload, app, res);
