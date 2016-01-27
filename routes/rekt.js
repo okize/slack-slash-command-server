@@ -6,7 +6,7 @@ module.exports = (app) => {
 
     const payload = {
       channel: req.channel,
-      icon_emoji: ':grimacing:',
+      icon_emoji: ':open_mouth:',
       text: text,
     };
 
