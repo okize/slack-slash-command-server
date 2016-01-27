@@ -30,7 +30,7 @@ app.use((req, res, next) => {
   if (req.body.channel_name === 'directmessage' || req.body.channel_name === 'privategroup') {
     req.channel = req.body.channel_id;
   } else {
-    req.channel = '#' + req.body.channel_name;
+    req.channel = `#${req.body.channel_name}`;
   }
   next();
 });

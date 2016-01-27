@@ -3,7 +3,7 @@ const response = require('../lib/responseHelper');
 
 module.exports = (app) => {
   app.post('/tableflip', (req, res) => {
-    const text = '(╯°□°）╯︵ ' + (req.body.text ? flip(req.body.text) : '┻━┻');
+    const text = `(╯°□°）╯︵ ' ${req.body.text ? flip(req.body.text) : '┻━┻'}`;
 
     const payload = {
       channel: req.channel,
