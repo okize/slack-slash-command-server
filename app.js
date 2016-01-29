@@ -19,6 +19,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // authenticate requests
 app.use((req, res, next) => {
+  // console.log(req.body.command)
+  // console.log(req.body.token)
   if (tokens.indexOf(req.body.token) === -1) {
     return res.status(401).json({ success: false, error: 'Invalid token.'});
   }
@@ -27,11 +29,14 @@ app.use((req, res, next) => {
 
 // set channel override
 app.use((req, res, next) => {
+  let channel = '';
   if (req.body.channel_name === 'directmessage' || req.body.channel_name === 'privategroup') {
-    req.channel = req.body.channel_id;
+    channel = req.body.channel_id;
   } else {
-    req.channel = `#${req.body.channel_name}`;
+    channel = `#${req.body.channel_name}`;
   }
+  Object.assign(req, {channel: channel});
+  console.log(req.channel);
   next();
 });
 
