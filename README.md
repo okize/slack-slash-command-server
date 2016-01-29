@@ -2,7 +2,7 @@
 
 Server for responding to custom Slack slash commands
 
-## Running Locally
+## Running locally
 
 Make sure you have [Node.js](http://nodejs.org/) and the [Heroku Toolbelt](https://toolbelt.heroku.com/) installed.
 
@@ -17,8 +17,16 @@ Your app should now be running on [localhost:9000](http://localhost:9000/).
 
 ## Deploying to Heroku
 
+### Initialize application
+
 ```sh
-heroku create
+heroku create <APP NAME>
 git push heroku master
-heroku open
+```
+
+### Set environment variables
+
+```sh
+heroku config:set SLACK_WEBHOOK_URL=???
+heroku config:set SLACK_TOKENS=???
 ```
