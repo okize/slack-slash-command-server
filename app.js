@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const compress = require('compression');
 const morgan = require('morgan');
 const fs = require('fs');
 const tokens = process.env.SLACK_TOKENS.split(',');
@@ -13,6 +14,9 @@ app.set('webhook', process.env.SLACK_WEBHOOK_URL);
 
 // apache-style logging
 app.use(morgan('dev'));
+
+// gzip assets
+app.use(compress());
 
 // static assets
 app.use('/public', express.static(`${__dirname}/public`));
