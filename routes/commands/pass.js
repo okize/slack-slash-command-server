@@ -1,5 +1,5 @@
 const request = require('request');
-const response = require('../lib/responseHelper');
+const response = require('../../lib/responseHelper');
 
 module.exports = (app) => {
   app.post('/pass', (req, res) => {

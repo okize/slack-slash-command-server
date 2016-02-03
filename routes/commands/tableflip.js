@@ -1,5 +1,5 @@
 const flip = require('flip');
-const response = require('../lib/responseHelper');
+const response = require('../../lib/responseHelper');
 
 module.exports = (app) => {
   app.post('/tableflip', (req, res) => {

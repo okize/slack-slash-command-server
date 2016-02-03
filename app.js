@@ -5,7 +5,7 @@ const compress = require('compression');
 const morgan = require('morgan');
 const fs = require('fs');
 const tokens = process.env.SLACK_TOKENS.split(',');
-const routes = './routes/';
+const commands = './routes/commands/';
 const appName = 'Slack Slash Server';
 const port = process.env.PORT || 9000;
 
@@ -45,8 +45,8 @@ app.use((req, res, next) => {
 });
 
 // require route files
-fs.readdirSync(routes).forEach((file) => {
-  require(routes + file)(app);
+fs.readdirSync(commands).forEach((file) => {
+  require(commands + file)(app);
 });
 
 app.get('/', (req, res) => {

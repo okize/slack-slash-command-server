@@ -1,4 +1,4 @@
-const response = require('../lib/responseHelper');
+const response = require('../../lib/responseHelper');
 
 module.exports = (app) => {
   app.post('/rekt', (req, res) => {
