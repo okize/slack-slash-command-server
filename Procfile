@@ -1,1 +1,1 @@
-web: node app.js
+web: node --use_strict ./bin/www

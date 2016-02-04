@@ -1,28 +1,39 @@
-const express = require('express');
-const app = express();
-const bodyParser = require('body-parser');
-const compress = require('compression');
-const morgan = require('morgan');
 const fs = require('fs');
+const path = require('path');
+const express = require('express');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const favicon = require('serve-favicon');
+const compress = require('compression');
+const logger = require('morgan');
 const tokens = process.env.SLACK_TOKENS.split(',');
+const indexRoute = './routes/index';
 const commands = './routes/commands/';
-const appName = 'Slack Slash Server';
-const port = process.env.PORT || 9000;
+
+// init app
+const app = express();
 
 // config
 app.set('webhook', process.env.SLACK_WEBHOOK_URL);
 
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
+
 // apache-style logging
-app.use(morgan('dev'));
+app.use(logger('dev'));
+
+// middleware
+app.use(cookieParser());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // gzip assets
 app.use(compress());
 
 // static assets
-app.use('/public', express.static(`${__dirname}/public`));
-
-// body parsing middleware
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, 'public')));
+// app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 // authenticate requests except for index page
 app.use((req, res, next) => {
@@ -50,12 +61,34 @@ fs.readdirSync(commands).forEach((file) => {
 });
 
 app.get('/', (req, res) => {
-  res.status(200).sendfile(`${__dirname}/public/index.html`);
+  res.render('index', { title: 'Slack Slash-Command Server' });
 });
 
-// start app
-app.listen(port, () => {
-  console.log('\n%s listening on port %s\n', appName, port);
+// catch 404 and forward to error handler
+app.use((req, res, next) => {
+  const err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
+
+// prints stracktrace in development
+if (app.get('env') === 'development') {
+  app.use((err, req, res, next) => {
+    res.status(err.status || 500);
+    res.render('error', {
+      message: err.message,
+      error: err
+    });
+  });
+}
+
+// no stacktraces in production
+app.use((err, req, res, next) => {
+  res.status(err.status || 500);
+  res.render('error', {
+    message: err.message,
+    error: {}
+  });
 });
 
 module.exports = app;
