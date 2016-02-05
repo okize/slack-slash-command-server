@@ -7,7 +7,7 @@ const favicon = require('serve-favicon');
 const compress = require('compression');
 const logger = require('morgan');
 const tokens = process.env.SLACK_TOKENS.split(',');
-const indexRoute = './routes/index';
+const indexRoute = require('./routes/index');
 const commands = './routes/commands/';
 
 // init app
@@ -60,9 +60,7 @@ fs.readdirSync(commands).forEach((file) => {
   require(commands + file)(app);
 });
 
-app.get('/', (req, res) => {
-  res.render('index', { title: 'Slack Slash-Command Server' });
-});
+app.use('/', indexRoute);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
