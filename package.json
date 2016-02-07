@@ -9,6 +9,7 @@
   "scripts": {
     "start": "node --use_strict ./bin/www",
     "start:debug": "DEBUG=slack-slash-server:* node --use_strict ./bin/www",
+    "watch": "nodemon --use_strict ./bin/www",
     "lint": "eslint --ext .js,.jsx . || true"
   },
   "repository": {
@@ -34,6 +35,7 @@
   "devDependencies": {
     "eslint": "~1.10.0",
     "eslint-config-airbnb": "~4.0.0",
-    "eslint-plugin-react": "~3.16.0"
+    "eslint-plugin-react": "~3.16.0",
+    "nodemon": "~1.8.1"
   }
 }
