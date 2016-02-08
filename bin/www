@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 
 const http = require('http');
-const debug = require('debug')('slack-slash-server:server');
+const debug = require('debug')('slack-slash-server');
 const app = require('../app');
-const server = http.createServer(app);
+const normalizePort = require('../lib/normalizePort');
 const port = normalizePort(process.env.PORT || '9000');
+const server = http.createServer(app);
 const appName = 'Slack Slash Server';
 
 // listen on provided port, on all network interfaces.
@@ -13,24 +14,7 @@ server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
 
-// Normalize a port into a number, string, or false.
-function normalizePort(val) {
-  const port = parseInt(val, 10);
-
-  if (isNaN(port)) {
-    // named pipe
-    return val;
-  }
-
-  if (port >= 0) {
-    // port number
-    return port;
-  }
-
-  return false;
-}
-
-// Event listener for HTTP server "error" event.
+// listener for error events
 function onError(error) {
   if (error.syscall !== 'listen') {
     throw error;
@@ -55,11 +39,11 @@ function onError(error) {
   }
 }
 
-// Event listener for HTTP server "listening" event.
+// listener for server init
 function onListening() {
   const addr = server.address();
   const bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
-  console.log('\n%s listening on %s\n', appName, bind);
+  debug('\n%s listening on %s\n', appName, bind);
 }
