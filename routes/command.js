@@ -1,4 +1,3 @@
-const fs = require('fs');
 const path = require('path');
 const express = require('express');
 const router = express.Router();
@@ -6,7 +5,7 @@ const router = express.Router();
 const tokens = process.env.SLACK_TOKENS.split(',');
 const commandsPath = path.join(__dirname, 'commands');
 
-router.post(/^(.*)$/, (req, res, next) => {
+router.post(/^(.*)$/, (req, res) => {
   const command = req.params[0];
 
   // authenticate requests
