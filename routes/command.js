@@ -1,12 +1,23 @@
+const fs = require('fs');
 const path = require('path');
 const express = require('express');
 const router = express.Router();
 
+// array of tokens to compare against tokens sent from slack
 const tokens = process.env.SLACK_TOKENS.split(',');
+
+// holds the commands that will be matched against route path
+const commands = {};
 const commandsPath = path.join(__dirname, 'commands');
 
+// synchronously load command modules
+fs.readdirSync(commandsPath).forEach((fileName) => {
+  const command = path.basename(fileName, path.extname(fileName));
+  commands[command] = require(path.join(commandsPath, fileName));
+});
+
 router.post(/^(.*)$/, (req, res) => {
-  const command = req.params[0];
+  const command = req.params[0].substring(1);
 
   // authenticate requests
   if (tokens.indexOf(req.body.token) === -1) {
@@ -22,7 +33,8 @@ router.post(/^(.*)$/, (req, res) => {
   }
   Object.assign(req, {channel: channel});
 
-  require(commandsPath + command)(req, res);
+  // run command
+  commands[command](req, res);
 });
 
 module.exports = router;
