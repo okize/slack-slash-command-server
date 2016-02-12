@@ -33,7 +33,10 @@ router.post(/^(.*)$/, (req, res) => {
   }
   Object.assign(req, {channel: channel});
 
-  // run command
+  // ensure there's a valid command to match request
+  if (Object.keys(commands).indexOf(command) === -1) {
+    return res.status(401).json({ success: false, error: `${command} command not found!`});
+  }
   commands[command](req, res);
 });
 
