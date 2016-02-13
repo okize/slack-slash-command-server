@@ -1,6 +1,4 @@
-const response = require('../../lib/responseHelper');
-
-module.exports = (req, res) => {
+module.exports = (req) => {
   const imageUrl = 'http://i.imgur.com/5dVT9Lx.gif';
 
   const payload = {
@@ -9,5 +7,5 @@ module.exports = (req, res) => {
     text: imageUrl,
   };
 
-  response(payload, res);
+  return payload;
 };

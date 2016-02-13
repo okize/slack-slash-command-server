@@ -1,6 +1,4 @@
-const response = require('../../lib/responseHelper');
-
-module.exports = (req, res) => {
+module.exports = (req) => {
   const chekt = req.body.text || 'rekt';
   const text = `\n[   ] not ${chekt}    [✓] ${chekt}`;
 
@@ -10,5 +8,5 @@ module.exports = (req, res) => {
     text: text,
   };
 
-  response(payload, res);
+  return payload;
 };

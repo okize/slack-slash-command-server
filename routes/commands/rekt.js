@@ -1,6 +1,4 @@
-const response = require('../../lib/responseHelper');
-
-module.exports = (req, res) => {
+module.exports = (req) => {
   const text = '\n:white_medium_square: Not rekt   :ballot_box_with_check: Rekt';
 
   const payload = {
@@ -9,5 +7,5 @@ module.exports = (req, res) => {
     text: text,
   };
 
-  response(payload, res);
+  return payload;
 };

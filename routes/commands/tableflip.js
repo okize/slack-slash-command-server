@@ -1,7 +1,6 @@
 const flip = require('flip');
-const response = require('../../lib/responseHelper');
 
-module.exports = (req, res) => {
+module.exports = (req) => {
   const text = `(╯°□°）╯︵ ' ${req.body.text ? flip(req.body.text) : '┻━┻'}`;
 
   const payload = {
@@ -10,5 +9,5 @@ module.exports = (req, res) => {
     text: text,
   };
 
-  response(payload, res);
+  return payload;
 };

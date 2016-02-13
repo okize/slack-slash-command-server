@@ -1,6 +1,4 @@
-const response = require('../../lib/responseHelper');
-
-module.exports = (req, res) => {
+module.exports = (req) => {
   const text = '\n\u200C\n:poop:\n:trophy:';
 
   const payload = {
@@ -8,5 +6,5 @@ module.exports = (req, res) => {
     text: text,
   };
 
-  response(payload, res);
+  return payload;
 };

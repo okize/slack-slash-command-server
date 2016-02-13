@@ -1,7 +1,6 @@
 const request = require('request');
-const response = require('../../lib/responseHelper');
 
-module.exports = (req, res) => {
+module.exports = (req) => {
   const flubrUrl = 'http://flubr.herokuapp.com/api/images/random/pass';
   request(flubrUrl, (error, resp, body) => {
     if (!error && resp.statusCode === 200) {
@@ -11,7 +10,7 @@ module.exports = (req, res) => {
         text: body,
       };
 
-      response(payload, res);
+      return payload;
     }
   });
 };

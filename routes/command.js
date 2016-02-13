@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const send = require('../lib/responseHelper');
 const express = require('express');
 const router = express.Router();
 
@@ -37,7 +38,10 @@ router.post(/^(.*)$/, (req, res) => {
   if (Object.keys(commands).indexOf(command) === -1) {
     return res.status(401).json({ success: false, error: `${command} command not found!`});
   }
-  commands[command](req, res);
+
+  const payload = commands[command](req);
+  send(payload, res);
+
 });
 
 module.exports = router;
