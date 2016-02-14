@@ -5,7 +5,6 @@ module.exports = (req) => {
   request(flubrUrl, (error, resp, body) => {
     if (!error && resp.statusCode === 200) {
       const payload = {
-        channel: req.channel,
         icon_emoji: ':thumbsdown:',
         text: body,
       };

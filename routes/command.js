@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const send = require('../lib/responseHelper');
 const express = require('express');
+const debug = require('debug')('slack-slash-server')
 const router = express.Router();
 
 // array of tokens to compare against tokens sent from slack
@@ -25,6 +26,13 @@ router.post(/^(.*)$/, (req, res) => {
     return res.status(401).json({ success: false, error: 'Invalid token.'});
   }
 
+  // ensure there's a valid command to match request
+  if (Object.keys(commands).indexOf(command) === -1) {
+    return res.status(401).json({ success: false, error: `${command} command not found!`});
+  }
+
+  const payload = commands[command](req);
+
   // set channel override
   let channel = '';
   if (req.body.channel_name === 'directmessage' || req.body.channel_name === 'privategroup') {
@@ -32,14 +40,10 @@ router.post(/^(.*)$/, (req, res) => {
   } else {
     channel = `#${req.body.channel_name}`;
   }
-  Object.assign(req, {channel: channel});
 
-  // ensure there's a valid command to match request
-  if (Object.keys(commands).indexOf(command) === -1) {
-    return res.status(401).json({ success: false, error: `${command} command not found!`});
-  }
+  Object.assign(payload, {channel: channel});
 
-  const payload = commands[command](req);
+  debug(payload)
   send(payload, res);
 
 });

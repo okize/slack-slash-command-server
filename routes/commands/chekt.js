@@ -3,7 +3,6 @@ module.exports = (req) => {
   const text = `\n[   ] not ${chekt}    [✓] ${chekt}`;
 
   const payload = {
-    channel: req.channel,
     icon_emoji: ':grimacing:',
     text: text,
   };
