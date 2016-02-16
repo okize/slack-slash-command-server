@@ -31,8 +31,6 @@ router.post(/^(.*)$/, (req, res) => {
     return res.status(401).json({ success: false, error: `${command} command not found!`});
   }
 
-  const payload = commands[command](req);
-
   // set channel override
   let channel = '';
   if (req.body.channel_name === 'directmessage' || req.body.channel_name === 'privategroup') {
@@ -41,10 +39,11 @@ router.post(/^(.*)$/, (req, res) => {
     channel = `#${req.body.channel_name}`;
   }
 
-  Object.assign(payload, {channel: channel});
-
-  debug(payload)
-  send(payload, res);
+  // fire off the command
+  commands[command](req, (payload) => {
+    Object.assign(payload, {channel: channel});
+    send(payload, res);
+  });
 
 });
 

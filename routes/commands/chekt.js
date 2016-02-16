@@ -1,4 +1,4 @@
-module.exports = (req) => {
+module.exports = function (req, cb) {
   const chekt = req.body.text || 'rekt';
   const text = `\n[   ] not ${chekt}    [✓] ${chekt}`;
 
@@ -7,5 +7,5 @@ module.exports = (req) => {
     text: text,
   };
 
-  return payload;
-};
+  return cb(payload);
+}

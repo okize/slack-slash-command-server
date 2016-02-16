@@ -1,4 +1,4 @@
-module.exports = (req) => {
+module.exports = (req, cb) => {
   const text = '\n:white_medium_square: Not rekt   :ballot_box_with_check: Rekt';
 
   const payload = {
@@ -6,5 +6,5 @@ module.exports = (req) => {
     text: text,
   };
 
-  return payload;
+  return cb(payload);
 };

@@ -1,4 +1,4 @@
-module.exports = (req) => {
+module.exports = (req, cb) => {
   const text = '\n\u200C\n:poop:\n:trophy:';
 
   const payload = {
@@ -6,5 +6,5 @@ module.exports = (req) => {
     text: text,
   };
 
-  return payload;
+  return cb(payload);
 };

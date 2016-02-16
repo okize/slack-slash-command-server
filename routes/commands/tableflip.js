@@ -1,6 +1,6 @@
 const flip = require('flip');
 
-module.exports = (req) => {
+module.exports = (req, cb) => {
   const text = `(╯°□°）╯︵ ' ${req.body.text ? flip(req.body.text) : '┻━┻'}`;
 
   const payload = {
@@ -8,5 +8,5 @@ module.exports = (req) => {
     text: text,
   };
 
-  return payload;
+  return cb(payload);
 };
