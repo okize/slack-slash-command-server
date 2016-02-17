@@ -2,7 +2,6 @@ const fs = require('fs');
 const path = require('path');
 const send = require('../lib/responseHelper');
 const express = require('express');
-const debug = require('debug')('slack-slash-server')
 const router = express.Router();
 
 // array of tokens to compare against tokens sent from slack
@@ -44,7 +43,6 @@ router.post(/^(.*)$/, (req, res) => {
     Object.assign(payload, {channel: channel});
     send(payload, res);
   });
-
 });
 
 module.exports = router;
