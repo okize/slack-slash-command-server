@@ -1,4 +1,4 @@
-# slack-slash-server
+# slack-slash-command-server
 
 Server for responding to custom Slack slash commands
 
@@ -7,8 +7,8 @@ Server for responding to custom Slack slash commands
 Make sure you have [Node.js](http://nodejs.org/) and the [Heroku Toolbelt](https://toolbelt.heroku.com/) installed.
 
 ```sh
-git clone git@github.com/okize/slack-slash-server.git
-cd slack-slash-server
+git clone git@github.com/okize/slack-slash-command-server.git
+cd slack-slash-command-server
 npm install
 npm start
 ```
