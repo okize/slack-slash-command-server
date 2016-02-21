@@ -1,11 +1,17 @@
 const fs = require('fs');
 const path = require('path');
-const send = require('../lib/responseHelper');
+const sendToSlack = require('../lib/sendToSlack');
 const express = require('express');
 const router = express.Router();
 
 // array of tokens to compare against tokens sent from slack
-const tokens = process.env.SLACK_TOKENS.split(',');
+const getTokens = () => {
+  const tokens = process.env.SLACK_TOKENS;
+  if (tokens) {
+    return tokens.split(',');
+  }
+  return [];
+};
 
 // holds the commands that will be matched against route path
 const commands = {};
@@ -21,7 +27,7 @@ router.post(/^(.*)$/, (req, res) => {
   const command = req.params[0].substring(1);
 
   // authenticate requests
-  if (tokens.indexOf(req.body.token) === -1) {
+  if (getTokens().indexOf(req.body.token) === -1) {
     return res.status(401).json({ success: false, error: 'Invalid token.'});
   }
 
@@ -38,10 +44,10 @@ router.post(/^(.*)$/, (req, res) => {
     channel = `#${req.body.channel_name}`;
   }
 
-  // fire off the command
+  // fire off the results to Slack
   commands[command](req, (payload) => {
     Object.assign(payload, {channel: channel});
-    send(payload, res);
+    sendToSlack(payload, res);
   });
 });
 
