@@ -32,33 +32,24 @@ app.use(compress());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
+// routes
 app.use('/', indexRoute);
 app.use('/command', commandRoute);
 
-// catch 404 and forward to error handler
+// catch 404s and forward to error handler
 app.use((req, res, next) => {
   const err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
 
-// prints stracktrace in development
-if (app.get('env') === 'development') {
-  app.use((err, req, res) => {
-    res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: err,
-    });
-  });
-}
-
-// no stacktraces in production
-app.use((err, req, res) => {
+// error handler; prints stack trace in development but not production
+app.use((err, req, res, next) => {
+  const stack = (app.get('env') === 'production') ? {} : err;
   res.status(err.status || 500);
   res.render('error', {
     message: err.message,
-    error: {},
+    error: stack,
   });
 });
 
