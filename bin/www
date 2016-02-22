@@ -6,7 +6,7 @@ const app = require('../app');
 const normalizePort = require('../lib/normalizePort');
 const port = normalizePort(process.env.PORT || '9000');
 const server = http.createServer(app);
-const appName = 'Slack Slash Server';
+const appName = 'Slack Slash Command Server';
 
 // listen on provided port, on all network interfaces.
 app.set('port', port);

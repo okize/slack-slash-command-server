@@ -7,9 +7,9 @@
     "node": "4.2.6"
   },
   "scripts": {
-    "start": "node --use_strict ./bin/www",
-    "start:debug": "DEBUG=slack-slash-command-server node --use_strict ./bin/www",
-    "watch": "DEBUG=slack-slash-command-server nodemon --use_strict ./bin/www",
+    "start": "NODE_ENV=production node --use_strict ./bin/www",
+    "start:debug": "DEBUG=slack-slash-command-server node -r dotenv/config --use_strict ./bin/www",
+    "watch": "DEBUG=slack-slash-command-server nodemon -r dotenv/config --use_strict ./bin/www",
     "lint": "eslint --ext .js,.jsx . || true"
   },
   "repository": {
@@ -33,6 +33,7 @@
     "serve-favicon": "~2.3.0"
   },
   "devDependencies": {
+    "dotenv": "~2.0.0",
     "eslint": "~1.10.0",
     "eslint-config-airbnb": "~4.0.0",
     "eslint-plugin-react": "~3.16.0",

@@ -10,8 +10,10 @@ Make sure you have [Node.js](http://nodejs.org/) and the [Heroku Toolbelt](https
 git clone git@github.com/okize/slack-slash-command-server.git
 cd slack-slash-command-server
 npm install
-npm start
+npm run watch
 ```
+
+Additionally you should create a .env file with `SLACK_WEBHOOK_URL` & `SLACK_TOKENS` values. The latter is a comma-separated list of slash command tokens.
 
 Your app should now be running on [localhost:9000](http://localhost:9000/).
 
