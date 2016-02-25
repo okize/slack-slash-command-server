@@ -12,4 +12,11 @@ describe('Web application', () => {
       .expect(200, done);
   });
 
+  it('should return a 404 response for an incorrect page', (done) => {
+    api
+      .get('/no-such-page')
+      .set('Accept', 'text/html')
+      .expect(404, done);
+  });
+
 });
