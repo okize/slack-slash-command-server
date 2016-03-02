@@ -1,3 +1,5 @@
+'use strict'; // remove when Node supports let outside strict mode
+
 const fs = require('fs');
 const path = require('path');
 const sendToSlack = require('../lib/sendToSlack');
