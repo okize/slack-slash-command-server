@@ -4,7 +4,7 @@ const http = require('http');
 const debug = require('debug')('slack-slash-command-server');
 const app = require('../app');
 const normalizePort = require('../lib/normalizePort');
-const port = normalizePort(process.env.PORT || '3000');
+const port = normalizePort(process.env.PORT || '9000');
 const server = http.createServer(app);
 const appName = 'Slack Slash Command Server';
 

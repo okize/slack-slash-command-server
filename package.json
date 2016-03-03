@@ -11,7 +11,8 @@
     "start:debug": "DEBUG=slack-slash-command-server node -r dotenv/config --use_strict ./bin/www",
     "watch": "DEBUG=slack-slash-command-server nodemon -r dotenv/config --use_strict ./bin/www",
     "lint": "eslint --ext .js,.jsx . || true",
-    "test": "mocha"
+    "test": "NODE_ENV=test mocha",
+    "test:watch": "NODE_ENV=test mocha --watch"
   },
   "repository": {
     "type": "git",
