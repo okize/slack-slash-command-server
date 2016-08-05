@@ -4,11 +4,11 @@
   "private": true,
   "description": "Server for responding to custom Slack slash commands",
   "engines": {
-    "node": "4.2.6"
+    "node": "6.2.1"
   },
   "scripts": {
     "start": "NODE_ENV=production node --use_strict ./bin/www",
-    "start:debug": "DEBUG=slack-slash-command-server node -r dotenv/config --use_strict ./bin/www",
+    "start:debug": "NODE_ENV=debug DEBUG=slack-slash-command-server node -r dotenv/config --use_strict ./bin/www",
     "watch": "DEBUG=slack-slash-command-server nodemon -r dotenv/config --use_strict ./bin/www",
     "lint": "eslint --ext .js,.jsx . || true",
     "test": "NODE_ENV=test mocha",
@@ -23,25 +23,25 @@
   "bugs": "https://github.com/okize/slack-slash-command-server/issues",
   "license": "MIT",
   "dependencies": {
-    "body-parser": "~1.14.1",
+    "body-parser": "~1.15.2",
     "compression": "~1.6.1",
-    "cookie-parser": "~1.3.5",
+    "cookie-parser": "~1.4.0",
     "debug": "~2.2.0",
-    "express": "~4.13.3",
-    "flip": "~0.1.1",
+    "express": "~4.14.0",
+    "flip": "~1.0.0",
     "jade": "~1.11.0",
-    "morgan": "~1.6.1",
-    "request": "~2.67.0",
+    "morgan": "~1.7.0",
+    "request": "~2.74.0",
     "serve-favicon": "~2.3.0"
   },
   "devDependencies": {
-    "chai": "~3.5.0",
-    "dotenv": "~2.0.0",
-    "eslint": "~1.10.0",
-    "eslint-config-airbnb": "~4.0.0",
-    "eslint-plugin-react": "~3.16.0",
-    "mocha": "~2.4.5",
-    "nodemon": "~1.8.1",
-    "supertest": "~1.1.0"
+    "chai": "^3.5.0",
+    "dotenv": "^2.0.0",
+    "eslint": "^3.2.2",
+    "eslint-config-airbnb-base": "^5.0.1",
+    "eslint-plugin-import": "^1.12.0",
+    "mocha": "^3.0.0",
+    "nodemon": "^1.8.1",
+    "supertest": "^2.0.0"
   }
 }

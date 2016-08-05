@@ -46,7 +46,7 @@ app.use((req, res, next) => {
 });
 
 // error handler; prints stack trace in development but not production
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
   const stack = (app.get('env') === 'production') ? {} : err;
   res.status(err.status || 500);
   res.render('error', {

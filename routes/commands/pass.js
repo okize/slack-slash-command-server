@@ -12,5 +12,6 @@ module.exports = (req, cb) => {
 
       return cb(payload);
     }
+    return JSON.parse(error);
   });
 };
