@@ -4,7 +4,7 @@
   "private": true,
   "description": "Server for responding to custom Slack slash commands",
   "engines": {
-    "node": "4.2.6"
+    "node": "6.2.1"
   },
   "scripts": {
     "start": "NODE_ENV=production node --use_strict ./bin/www",
