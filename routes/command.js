@@ -21,7 +21,8 @@ const commandsPath = path.join(__dirname, 'commands');
 // synchronously load command modules
 fs.readdirSync(commandsPath).forEach((fileName) => {
   const command = path.basename(fileName, path.extname(fileName));
-  commands[command] = require(path.join(commandsPath, fileName)); // eslint-disable-line global-require
+  // eslint-disable-next-line global-require,import/no-dynamic-require
+  commands[command] = require(path.join(commandsPath, fileName));
 });
 
 router.post(/^(.*)$/, (req, res) => { // eslint-disable-line global-require
