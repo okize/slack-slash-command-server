@@ -1,8 +1,8 @@
 module.exports = (req, cb) => {
-  const imageUrl = 'http://i.imgur.com/AByvK9k.gif';
+  const imageUrl = 'http://i.imgur.com/9OBeGYt.gif';
 
   const payload = {
-    icon_emoji: ':space_invader:',
+    icon_emoji: ':fire:',
     text: imageUrl,
   };
 
