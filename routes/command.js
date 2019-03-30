@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
-const sendToSlack = require('../lib/sendToSlack');
 const express = require('express');
+const sendToSlack = require('../lib/sendToSlack');
 
 const router = express.Router();
 
