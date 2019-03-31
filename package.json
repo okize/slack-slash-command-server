@@ -26,7 +26,7 @@
     "body-parser": "^1.15.2",
     "compression": "^1.6.1",
     "cookie-parser": "^1.4.0",
-    "debug": "3.1.0",
+    "debug": "^3.1.0",
     "express": "^4.14.0",
     "flip": "^1.0.0",
     "morgan": "^1.7.0",
@@ -36,12 +36,12 @@
   },
   "devDependencies": {
     "chai": "^4.1.2",
-    "dotenv": "4.0.0",
+    "dotenv": "^4.0.0",
     "eslint": "^5.14.1",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.16.0",
-    "mocha": "4.0.1",
+    "mocha": "^4.0.1",
     "nodemon": "^1.8.1",
-    "supertest": "3.0.0"
+    "supertest": "^3.0.0"
   }
 }
