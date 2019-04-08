@@ -26,7 +26,7 @@
     "body-parser": "^1.15.2",
     "compression": "^1.6.1",
     "cookie-parser": "^1.4.0",
-    "debug": "^3.1.0",
+    "debug": "^4.1.1",
     "express": "^4.14.0",
     "flip": "^1.0.0",
     "morgan": "^1.7.0",
