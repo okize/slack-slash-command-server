@@ -35,13 +35,13 @@
     "serve-favicon": "^2.3.0"
   },
   "devDependencies": {
-    "chai": "^4.1.2",
+    "chai": "^4.1.0",
     "dotenv": "^8.0.0",
     "eslint": "^7.0.0",
     "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-plugin-import": "^2.16.0",
-    "mocha": "^6.0.2",
-    "nodemon": "^1.8.1",
+    "eslint-plugin-import": "^2.0.0",
+    "mocha": "^6.0.0",
+    "nodemon": "^1.8.0",
     "supertest": "^4.0.0"
   }
 }
