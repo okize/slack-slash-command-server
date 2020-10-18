@@ -30,7 +30,7 @@
     "express": "^4.14.0",
     "flip": "^1.0.0",
     "morgan": "^1.7.0",
-    "pug": "^2.0.0-beta4",
+    "pug": "^3.0.0",
     "request": "^2.75.0",
     "serve-favicon": "^2.3.0"
   },
