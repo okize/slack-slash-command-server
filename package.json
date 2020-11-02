@@ -39,6 +39,7 @@
     "dotenv": "^8.0.0",
     "eslint": "^7.0.0",
     "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-import": "^2.0.0",
     "mocha": "^8.0.0",
     "nodemon": "^2.0.0",
