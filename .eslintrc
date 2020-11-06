@@ -1,11 +1,14 @@
-// add rule overrides as needed
 {
   "extends": "airbnb-base",
+  "plugins": ["prettier"],
   "rules": {
-    "max-len": [2, 120, 4],
-    "new-cap": [2, {
-      "capIsNewExceptions": ["express.Router"]
-    }],
-    "object-shorthand": 0,
+    "prettier/prettier": "error",
+    "new-cap": [
+      "error",
+      {
+        "capIsNewExceptions": ["express.Router"]
+      }
+    ],
+    "object-shorthand": 0
   }
 }
