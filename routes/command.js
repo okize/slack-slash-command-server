@@ -25,7 +25,7 @@ fs.readdirSync(commandsPath).forEach((fileName) => {
   commands[command] = require(path.join(commandsPath, fileName));
 });
 
-router.post(/^(.*)$/, (req, res) => { // eslint-disable-line global-require
+router.post(/^(.*)$/, (req, res) => {
   const command = req.params[0].substring(1);
 
   // authenticate requests
