@@ -660,10 +660,10 @@ doctypes@^1.1.0:
   resolved "https://registry.yarnpkg.com/doctypes/-/doctypes-1.1.0.tgz#ea80b106a87538774e8a3a4a5afe293de489e0a9"
   integrity sha1-6oCxBqh1OHdOijpKWv4pPeSJ4Kk=
 
-dotenv@^14.0.0:
-  version "14.3.2"
-  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-14.3.2.tgz#7c30b3a5f777c79a3429cb2db358eef6751e8369"
-  integrity sha512-vwEppIphpFdvaMCaHfCEv9IgwcxMljMw2TnAQBB4VWPvzXQLTb82jwmdOKzlEVUL3gNFT4l4TPKO+Bn+sqcrVQ==
+dotenv@^15.0.0:
+  version "15.0.1"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-15.0.1.tgz#bf96a46782923e17a64b5edb35eb50d2292efd65"
+  integrity sha512-4OnbwRfzR+xQThp7uq1xpUS9fmgZ//njexOtPjPSbK3yHGrSHSJnaJRsXderSSm2elfvVj+Y5awDC0I8Oy8rkA==
 
 ecc-jsbn@~0.1.1:
   version "0.1.2"
