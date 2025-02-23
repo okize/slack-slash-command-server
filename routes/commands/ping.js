@@ -3,7 +3,7 @@ module.exports = (req, cb) => {
 
   const payload = {
     icon_emoji: ':signal_strength:',
-    text: text,
+    text,
   };
 
   return cb(payload);

@@ -4,7 +4,7 @@ module.exports = (req, cb) => {
 
   const payload = {
     icon_emoji: ':grimacing:',
-    text: text,
+    text,
   };
 
   return cb(payload);

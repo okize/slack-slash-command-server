@@ -3,7 +3,7 @@ module.exports = (req, cb) => {
 
   const payload = {
     username: 'Poopy Magoo',
-    text: text,
+    text,
   };
 
   return cb(payload);

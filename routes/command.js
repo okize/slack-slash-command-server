@@ -48,7 +48,7 @@ router.post(/^(.*)$/, (req, res) => {
 
   // fire off the results to Slack
   return commands[command](req, (payload) => {
-    Object.assign(payload, { channel: channel });
+    Object.assign(payload, { channel });
     sendToSlack(payload, res);
   });
 });

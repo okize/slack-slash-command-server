@@ -15,7 +15,7 @@ yarn run watch
 
 Additionally you should create a .env file with `SLACK_WEBHOOK_URL` & `SLACK_TOKENS` values. The latter is a comma-separated list of slash command tokens.
 
-Your app should now be running on [localhost:9000](http://localhost:9000/).
+Your app should now be running on [localhost:1234](http://localhost:1234/).
 
 ## Deploying to Heroku
 

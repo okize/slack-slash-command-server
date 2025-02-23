@@ -3,7 +3,7 @@ module.exports = (req, cb) => {
 
   const payload = {
     icon_emoji: ':open_mouth:',
-    text: text,
+    text,
   };
 
   return cb(payload);

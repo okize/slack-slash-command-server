@@ -1,4 +1,4 @@
-import { FlatCompat } from '@eslint/eslintrc';
+import { FlatCompat } from '@eslint/eslintrc'; // eslint-disable-line import/no-extraneous-dependencies
 
 const compat = new FlatCompat();
 

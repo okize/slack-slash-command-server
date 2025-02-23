@@ -4,18 +4,12 @@ const http = require('http');
 const debug = require('debug')('slack-slash-command-server');
 const app = require('../app');
 const normalizePort = require('../lib/normalizePort');
-const port = normalizePort(process.env.PORT || '9000');
+const port = normalizePort(process.env.PORT || '1234');
 const server = http.createServer(app);
 const appName = 'Slack Slash Command Server';
 
-// listen on provided port, on all network interfaces.
-app.set('port', port);
-server.listen(port);
-server.on('error', onError);
-server.on('listening', onListening);
-
 // listener for error events
-function onError(error) {
+const onError = () => {
   if (error.syscall !== 'listen') {
     throw error;
   }
@@ -38,8 +32,14 @@ function onError(error) {
 }
 
 // listener for server init
-function onListening() {
+const onListening = () => {
   const addr = server.address();
   const bind = (typeof addr === 'string') ? `pipe ${addr}` : `port ${addr.port}`;
   debug('\n%s listening on %s\n', appName, bind);
 }
+
+// listen on provided port, on all network interfaces.
+app.set('port', port);
+server.listen(port);
+server.on('error', onError);
+server.on('listening', onListening);
